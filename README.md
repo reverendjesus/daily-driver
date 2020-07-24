@@ -13,22 +13,21 @@ The **heartBeat** function picks a random number from 0-100; on 95 of those resu
 
 ## Show Mode
 
-Pressing button A will, after the current scroll:bit animation is finished, display "metal horns" on the micro:bit, scroll "show mode," and set **concertMode** to true. 
+Pressing button A&B will, after the current scroll:bit animation is finished, display "metal horns" on the micro:bit, scroll "show mode," and set **concertMode** to true. 
 
 While true, the operation of **heartBeats** will change; 95 of the results will display a heartbeat animation and always scroll a line from the **bandScroll** text array (the idea is that the user changes the **bandScroll** array to whatever bands are playing at the show you're at). The 5 'alternate' heartbeats will scroll a line from **dailyScroll** instead.
 
-Pressing button B will display a stickman on the micro:bit and set **concertMode** back to false.
+Pressing button A&B will display a stickman on the micro:bit and set **concertMode** back to false.
 
 ## Magic 8 Ball
 
-Button A&B together will run a "magic 8-ball" function, with a 50/50 chance to get either:
-
- (a) one of the original 20 responses from the actual magic 8-ball, or 
+Button A will run a "magic 8-ball" function, with a (yes/no/noncommital) answer randomizer, displaying one of the original 20 responses from the actual magic 8-ball, or one of the responses from the "sarcastic 8-ball" parody products floating around in the æther. 
  
- (b) a bunch of responses from some of the sarcastic 8-ball parody productsfloating around in the æther. 
+ It'll display a short animation on the micro:bit, then one of the response lines from the **8ball** function on the scroll:bit.
  
- It'll display a short animation on the micro:bit and scroll one of the response lines from the **8ball** function.
+ ## Arcane Bullshit
  
+ Button B randomly displays an Elder Futhark rune on the micro:bit, and the name of a random [Arcane Bullshit](https://arcanebullshit.com/) tarot card on the scroll:bit.
 
 ## Use as Extension
 
