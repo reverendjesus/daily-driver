@@ -4,8 +4,8 @@ function bandScroll () {
     sendScroll()
 }
 function dailyScroll () {
-    scroll = ["WELCOME TO THE PRE-APOCALYPSE!", "@realRevJesus", "Ask me about selling your soul!", "FSoFCabal.com", "I have seen the fnords", "1312", "15,517,801 CASES      632,914 DEAD      9,441,006 RECOVERED      6% MORTALITY RATE      0.2% WORLD POP AFFECTED      WEAR A FUCKING MASK", "r/SeattlePunk", "Don't panic - but wash your hands!", "I'm your Huckleberry", "GNU Terry Pratchett", "Nazi Punks Fuck Off", "OperationBrowniePockets.com", "The Army of the Twelve Monkeys was here", "+++       Out of Cheese Error       Redo From Start       Melon       Melon       Melon       +++", "Wubba-lubba dub dub!", "If you type 'google' into Google, it will break the Internet", "Earth: Mostly Harmless", "LEGALIZE MEDICAL COCAINE", "All that is gold does not glitter; not all those who wander are lost", "A man can never have too much red wine, too many books, or too much ammunition.", "We were somewhere around Barstow, on the edge of the desert, when the drugs began to take hold", "Graffiti is beautiful, like a brick in the face of a cop.", "Have you tried turning it off and back on again?", "OVERALL THERE IS A SMELL OF FRIED ONIONS", "I may be crazy, but that doesn't mean I'm wrong - I'm MAD, not ill!", "Currently drinking my way through the Coronapocalypse", "Think of how stupid the average person is - and realize half of them are stupider than that!", "Those who dance are considered insane by those who cannot hear the music", "They're probably foreigners, with ways different from our own - they may do some more...       folk dancing", "I am a leaf on the wind - watch how I soar", "I must not fear - fear is the mind-killer. Fear is the little death that brings total obliteration.", "Many that live deserve death, yet some that die deserve life - do not be too eager to deal out death in judgement.", "Welcome to Earth! It's hot in the summer and cold in the winter; it's round and wet and crowded.... there's only one rule I know of - 'Goddammit, you've got to be kind.'", "The enemy is anybody who's going to get you killed - no matter which side he's on.", "'TIS AN ILL WIND THAT BLOWS NO MINDS - for further information, consult your pineal gland", "Violence - naked force - has settled more issues in history than has any other factor, and the contrary opinion is wishful thinking at its worst.", "There is no overkill - there is only 'open fire' and 'reload.'", "War is an ill thing, as I well know - but 'twould be an ill world for weaponless dreamers, if evil men were not now and then slain.", "When did the future switch from being a promise to being a threat?", "KICK OUT THE JAMS", "WAR IS PEACE", "FREEDOM IS SLAVERY", "IGNORANCE IS STRENGTH"]
-    random = randint(0, 40)
+    scroll = ["WELCOME TO THE PRE-APOCALYPSE!", "@realRevJesus", "Ask me about selling your soul!", "FSoFCabal.com", "I have seen the fnords", "1312", "15,914,516 CASES      641,483 DEAD      9,696,491 RECOVERED      6% MORTALITY RATE      0.2% WORLD POP AFFECTED      WEAR A FUCKING MASK", "r/SeattlePunk", "Don't panic - but wash your hands!", "I'm your Huckleberry", "GNU Terry Pratchett", "Nazi Punks Fuck Off", "OperationBrowniePockets.com", "The Army of the Twelve Monkeys was here", "+++       Out of Cheese Error       Redo From Start       Melon       Melon       Melon       +++", "Wubba-lubba dub dub!", "If you type 'google' into Google, it will break the Internet", "Earth: Mostly Harmless", "LEGALIZE MEDICAL COCAINE", "All that is gold does not glitter; not all those who wander are lost", "A man can never have too much red wine, too many books, or too much ammunition.", "We were somewhere around Barstow, on the edge of the desert, when the drugs began to take hold", "Graffiti is beautiful, like a brick in the face of a cop.", "Have you tried turning it off and back on again?", "OVERALL THERE IS A SMELL OF FRIED ONIONS", "I may be crazy, but that doesn't mean I'm wrong - I'm MAD, not ill!", "Currently drinking my way through the Coronapocalypse", "Think of how stupid the average person is - and realize half of them are stupider than that!", "Those who dance are considered insane by those who cannot hear the music", "They're probably foreigners, with ways different from our own - they may do some more...       folk dancing", "I am a leaf on the wind - watch how I soar", "I must not fear - fear is the mind-killer. Fear is the little death that brings total obliteration.", "Many that live deserve death, yet some that die deserve life - do not be too eager to deal out death in judgement.", "Welcome to Earth! It's hot in the summer and cold in the winter; it's round and wet and crowded.... there's only one rule I know of - 'Goddammit, you've got to be kind.'", "The enemy is anybody who's going to get you killed - no matter which side he's on.", "'TIS AN ILL WIND THAT BLOWS NO MINDS - for further information, consult your pineal gland", "Violence - naked force - has settled more issues in history than has any other factor, and the contrary opinion is wishful thinking at its worst.", "There is no overkill - there is only 'open fire' and 'reload.'", "War is an ill thing, as I well know - but 'twould be an ill world for weaponless dreamers, if evil men were not now and then slain.", "When did the future switch from being a promise to being a threat?", "KICK OUT THE JAMS", "WAR IS PEACE", "FREEDOM IS SLAVERY", "IGNORANCE IS STRENGTH"]
+    random = randint(0, 43)
     sendScroll()
 }
 function arcaneBullshit () {
@@ -234,8 +234,11 @@ input.onButtonPressed(Button.A, function () {
 })
 function modeChange () {
     reverse = Math.randomBoolean()
-    random = 0
-    altscr = false
+    if (reverse == true) {
+        scrollbit.setUpsideDown(true)
+    } else {
+        scrollbit.setUpsideDown(false)
+    }
     if (concertMode == false) {
         basic.showLeds(`
             # . . # .
@@ -245,15 +248,11 @@ function modeChange () {
             . # # . .
             `)
         concertMode = true
-        scroll = ["SHOW MODE"]
-        sendScroll()
-        basic.clearScreen()
+        scrollbit.scrollText("SHOW MODE", randint(200, 255), randint(0, Math.abs(input.temperature())))
     } else if (concertMode == true) {
         basic.showIcon(IconNames.StickFigure)
         concertMode = false
-        scroll = ["DAILY DRIVER"]
-        sendScroll()
-        basic.clearScreen()
+        scrollbit.scrollText("DAILY DRIVER", randint(200, 255), randint(0, Math.abs(input.temperature())))
     }
 }
 input.onButtonPressed(Button.AB, function () {
@@ -284,7 +283,7 @@ function heartBeats () {
     basic.pause(2 * randint(input.temperature(), 5 * input.temperature()))
     basic.showIcon(IconNames.SmallHeart)
     control.waitMicros(1000 * randint(input.temperature(), 5 * input.temperature()))
-    reverse = Math.randomBoolean()
+    reverse = false
     if (beats == 13) {
         basic.showIcon(IconNames.Skull)
         altscr = true
@@ -315,28 +314,22 @@ function heartBeats () {
                 . # # . .
                 `)
         }
-        reverse = false
         altscr = false
         doScroll = Math.randomBoolean()
     }
     basic.clearScreen()
     if (concertMode == true && altscr == true) {
-        altscr = Math.randomBoolean()
-        reverse = Math.randomBoolean()
-        if (altscr == true) {
-            seattleScroll()
-        } else {
-            dailyScroll()
-        }
+        dailyScroll()
     } else if (concertMode == true && altscr == false) {
-        bandScroll()
-        reverse = Math.randomBoolean()
+        if (doScroll == true) {
+            bandScroll()
+        }
     } else if (concertMode == false && altscr == true) {
-        reverse = Math.randomBoolean()
         seattleScroll()
     } else if (concertMode == false && altscr == false) {
-        reverse = false
-        dailyScroll()
+        if (doScroll == true) {
+            dailyScroll()
+        }
     }
     control.waitMicros(10000 * randint(5 * input.temperature(), 10 * input.temperature()))
 }
@@ -378,8 +371,8 @@ function _8ball () {
 }
 let doScroll = false
 let beats = 0
-let altScroll: string[] = []
 let altscr = false
+let altScroll: string[] = []
 let rune = false
 let reverse = false
 let random = 0
