@@ -10,12 +10,48 @@ function dailyScroll () {
 }
 function arcaneBullshit () {
     basic.showLeds(`
+        . . . # .
+        . . . . .
+        . . . . .
+        . # . . .
+        # # # . .
+        `)
+    basic.showLeds(`
+        . . . # .
+        . . . # .
+        . . . . .
+        . # . . .
+        # # # . .
+        `)
+    basic.showLeds(`
+        . . . . .
+        . . # . .
+        . . . # .
+        . # . # .
+        # # # . .
+        `)
+    basic.showLeds(`
+        . . # # .
+        . . . . .
+        . . . . .
+        . # # # .
+        # # # # #
+        `)
+    basic.showLeds(`
+        . . # . .
+        . . # # .
+        . . . . .
+        . # # # .
+        # # # # #
+        `)
+    basic.showLeds(`
         . . . . .
         . . # . .
         . . # # .
         . # # # .
         # # # # #
         `)
+    control.waitMicros(1000 * randint(input.temperature(), 5 * input.temperature()))
     scroll = ["LOOK AT THIS FUCKING HOURGLASS", "THE", "THE FROODUS", "THE PREGNANT BABIES", "THE GURU", "MAZE FACE", "HORSE DEATH", "THIEF", "SPACE DEATH", "THE PARASITIC FRUIT", "RHUBARB TONY", "SEX WITCH WITH OCTOPUS", "THE FORMER CHILD STAR", "THE DECISION MAKER", "THE PYRAMID-HEADED BIRD", "THE DOUBLE CAVEMAN", "THE ROBOT RIDING A GORILLA", "THE LORD OF THE HUNT", "THE PUPA VOMITING ON CATS", "KING FANCY", "THE WEREWOLF AND THE PIG MAKING OUT", "COFFIN FULL OF TACOS FULL OF SNAKES", "THE GRAVY FUNNEL", "MAKE UP YOUR GODDAMN MIND", "THE WEIRD TREE", "BASEBALL GOAT", "THE DILDO WIZARD", "HALF-PRICE HOT WINGS", "NIP-SLIP POPE", "THE ALL-SEEING SLICE", "KNEES", "NOBODY", "SOMETHING", "INSTINCT", "THE BEEFCAKE", "SAXOPHONE FETUS", "PIT BULL DRIVING A TINY TRUCK", "CARD OF CARDS", "THE SWORD HOARDER", "THE GOLDEN RETRIEVER", "THE GREASED PRIEST", "RANDOM CLIP ART", "FUTURE GRANDMA", "EVERYTHING'S FINE", "RAPTOR RIDING A DOLPHIN IN SPACE", "ROBODODO", "THE ANTHROPOMORPHIC CARROT", "CHAOS MOM", "IT'S PROBABLY NOTHING", "YOU'RE FUCKED", "SHRIMP AND GUNS", "THE INVERTED SQUIRREL", "THE SURFIN' CHIMP", "SHARK, TROMBONE, AND THREE SANDWICHES", "FUTURE NOT FOUND", "THE BIRD-BOOK-SNAKE THING", "THE RAT TROUT", "THE PANTSLESS BEEKEPER", "I HAVE NO FUCKING CLUE", "THE FALSE FACE", "GIVING BIRTH TO A SKULL", "THE QUEEN OF HOLES", "WOLVES", "CRAZY MYSTICAL SHIT", "INFINITE COSMIC MESS", "THE FLYING MAN", "THE FILTHY MATRESS", "THE FLOPPY KEY", "GALAXY DAD", "THE GIANT SPERM FIGHTING A DOVE", "THE SKELETON EATING A BANANA", "THE PIE KNIGHT", "THE HERON BEARER", "MEANINGLESS GARBAGE", "URINAL DEATH", "THE ORGY", "OLD MAN POURING WATER ON AN EYEBALL", "THE GROSS CUP", "MADAME RUFFLEBONNET", "THE FERAL NERD", "THE PENIS WEASEL", "THE SHITTY ACOUSTIC GUITAR GUY", "THE DIGGING GHOST", "THE EAGLE CHAINED TO A CALF", "ANNIHILATION", "BIRTHDAY CORPSE", "DEATH DEATH", "PAPA MACHO", "A WOMAN BREASTFEEDING A VCR", "A CAT LICKING ITS BUTT FOR ETERNITY", "A BUNCH OF CATS POSING AS A WOMAN", "BIG SEXY SATAN", "THIS CARD IS DEFINITELY ABOUT SEX", "LIL' PABLO", "THIS FUCKING GUY", "YOU'RE SO FUCKING FUCKED", "HANG IN THERE", "AUNT BRENDA", "VENGEANCE", "THE PROVIDER", "THE SUPER HORNY PORNO OWL", "WET PANTS", "KING SHIT", "THE TOILET ANGEL", "A CACTUS ON A MOTORCYCLE WITH UDDERS", "A UTERUS WITH FEET"]
     random = randint(0, 105)
     reverse = Math.randomBoolean()
@@ -293,7 +329,7 @@ function heartBeats () {
     } else if (beats == 66) {
         basic.showIcon(IconNames.Sword)
         altscr = true
-    } else if (beats == 42) {
+    } else if (beats == Math.round(input.temperature() / 2)) {
         basic.showIcon(IconNames.EigthNote)
         altscr = true
     } else if (beats == 99) {
@@ -357,6 +393,7 @@ function _8ball () {
         . # . # .
         . # # # .
         `)
+    control.waitMicros(1000 * randint(input.temperature(), 5 * input.temperature()))
     random = randint(0, 2)
     if (random == 0) {
         scroll = ["Very doubtful", "You've got to be kidding", "Outlook not so good", "Yeah, and I'm the Pope", "My sources say no", "Not a fuckin' chance", "In your dreams", "Yeah, right", "Not on your life", "You wish", "My reply is no", "Don't count on it", "Not in a million years", "Not gonna happen"]
